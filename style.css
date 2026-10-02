@@ -1,134 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 /* Base Styles & Layout */
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f3f4f6;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Soft, vibrant, educational glassmorphism mesh background */
+    background-color: #f0f4f8;
+    background-image: 
+        radial-gradient(at 10% 10%, rgba(212, 230, 255, 0.7) 0px, transparent 50%),
+        radial-gradient(at 90% 20%, rgba(230, 226, 255, 0.7) 0px, transparent 50%),
+        radial-gradient(at 30% 80%, rgba(215, 250, 235, 0.7) 0px, transparent 50%),
+        radial-gradient(at 80% 90%, rgba(253, 233, 255, 0.7) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(255, 245, 220, 0.5) 0px, transparent 50%);
+    background-attachment: fixed;
     display: flex;
     height: 100vh;
 }
 
-/* Left Side Form Panel */
+/* Beautiful minimal scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* Left Side Form Panel - Apple Glass UI */
 .controls {
-    width: 400px;
-    background: #ffffff;
+    width: 420px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 30px 40px;
-    box-shadow: 4px 0 24px rgba(0,0,0,0.06);
+    box-shadow: 1px 0 24px rgba(0,0,0,0.04);
     overflow-y: auto;
     z-index: 10;
-    border-right: 1px solid #e5e7eb;
+    border-right: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .controls h2 {
     margin-top: 0;
-    color: #111827;
-    font-size: 22px;
+    color: #1e293b;
+    font-size: 24px;
     font-weight: 700;
-    border-bottom: 2px solid #e5e7eb;
+    letter-spacing: -0.5px;
     padding-bottom: 15px;
     margin-bottom: 25px;
+    position: relative;
+}
+
+.controls h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 40px;
+    background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+    border-radius: 2px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
-/* Updated UI/UX based on request */
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #2b6cb0;
+    font-weight: 600;
+    font-size: 13px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .form-group input, .form-group select {
     width: 100%;
-    padding: 10px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
     box-sizing: border-box;
-    font-size: 14px;
-    color: #334155;
-    background-color: #f8fafc;
-    transition: all 0.2s ease;
+    font-size: 15px;
+    font-family: inherit;
+    color: #1e293b;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-group input:focus, .form-group select:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-    background-color: #ffffff;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15), inset 0 2px 5px rgba(0,0,0,0.01);
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
 }
 
-/* Student Entry Box for Multiple Students */
+/* Student Entry Box */
 .student-entry {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 15px;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 16px;
     margin-bottom: 15px;
     position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease;
 }
+
+.student-entry:hover {
+    transform: translateY(-2px);
+}
+
 .student-entry .remove-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -10px;
+    right: -10px;
     background: #ef4444;
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
     font-size: 12px;
+    font-weight: bold;
     cursor: pointer;
-    width: auto;
     margin: 0;
-}
-.student-entry .remove-btn:hover { background: #dc2626; }
-
-button {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.2s ease;
 }
 
-.btn-secondary {
-    background-color: #e2e8f0;
-    color: #475569;
+.student-entry .remove-btn:hover { 
+    background: #dc2626; 
+    transform: scale(1.1);
 }
-.btn-secondary:hover { background-color: #cbd5e1; }
 
-.btn-generate {
-    background-color: #2563eb;
-    color: white;
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
-.btn-generate:hover { 
-    background-color: #1d4ed8;
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.5);
+    color: #475569;
+    border: 1px dashed #94a3b8;
+    text-shadow: none;
+}
+.btn-secondary:hover { 
+    background: rgba(255, 255, 255, 0.8); 
+    border-color: #64748b;
     transform: translateY(-1px);
-    box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
 }
 
 .btn-print {
-    background-color: #10b981;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
     color: white;
-    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 10px 20px -5px rgba(139, 92, 246, 0.4);
 }
 .btn-print:hover { 
-    background-color: #059669;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -5px rgba(139, 92, 246, 0.5);
 }
 
 .error {
     color: #ef4444;
     font-size: 12px;
+    font-weight: 500;
     display: none;
     margin-top: 6px;
 }
@@ -136,21 +196,30 @@ button {
 /* Right Side A4 Preview Panel */
 .preview-container {
     flex: 1;
-    padding: 10px;
+    padding: 40px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
+}
+
+/* Sheet Wrapper (Used for foolproof centering and scaling) */
+.sheet-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Soft glowing shadow around the paper */
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.06));
 }
 
 /* --- A4 Sheet Styling --- */
+/* (Keeping the letter strictly formal and accurate) */
 .a4-sheet {
     width: 210mm;
     height: 297mm;
     background: white;
     padding: 8mm 12mm;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
@@ -159,12 +228,14 @@ button {
     line-height: 1.6;
     color: #000;
     flex-shrink: 0;
+    /* Clean, crisp border for visual separation from the glass background */
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .annexure-label {
     position: absolute;
-    top: 8mm;
-    right: 12mm;
+    top: 2mm;
+    right: 2mm;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -172,7 +243,7 @@ button {
 .top-logo {
     width: 100%;
     display: block;
-    margin: 0 auto 15px auto;
+    margin: 0 auto 10px auto;
     margin-top: 30px;
 }
 
@@ -198,20 +269,37 @@ p { margin-bottom: 15px; text-align: justify; }
 
 .signature-block { margin-top: 150px; text-align: left; }
 
-.placeholder { color: #ccc; font-style: italic; }
-.filled { color: #000; font-style: normal; }
+/* Animated Shimmering Placeholder Text */
+.placeholder { 
+    font-style: italic;
+    background: linear-gradient(90deg, #94a3b8 0%, #cbd5e1 25%, #94a3b8 50%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: placeholderShimmer 2.5s linear infinite;
+    font-weight: 600; /* slightly bolder to make the shimmer pop */
+}
 
-/* Sheet Wrapper (Used for foolproof centering and scaling) */
-.sheet-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+@keyframes placeholderShimmer {
+    to {
+        background-position: -200% center;
+    }
+}
+
+.filled { 
+    color: #000; 
+    font-style: normal; 
+    background: none;
+    -webkit-text-fill-color: initial;
+    animation: none;
+    font-weight: bold;
 }
 
 /* Mobile Responsive Design */
 @media screen and (max-width: 768px) {
     body { flex-direction: column; height: auto; }
-    .controls { width: 100%; padding: 20px 15px; border-right: none; border-bottom: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .controls { width: 100%; padding: 20px 15px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.7); }
     .preview-container { 
         width: 100%; 
         padding: 20px 0; 
@@ -219,7 +307,8 @@ p { margin-bottom: 15px; text-align: justify; }
     }
     .sheet-wrapper {
         height: 143mm; /* 297mm * 0.48 = 142.56mm. Reserves exact scaled space. */
-        overflow: hidden; /* Prevent original 210mm box from forcing flex container width */
+        overflow: hidden; 
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));
     }
     .a4-sheet { 
         transform: scale(0.48); 
@@ -232,11 +321,12 @@ p { margin-bottom: 15px; text-align: justify; }
 @media print {
     body { background: white; display: block; height: auto; }
     .controls { display: none; }
-    .preview-container { padding: 0; display: block; gap: 0; }
+    .preview-container { padding: 0; display: block; gap: 0; background: none; }
     .sheet-wrapper {
         display: block;
         width: 100%;
         page-break-after: always;
+        filter: none;
     }
     .sheet-wrapper:last-child {
         page-break-after: auto;
@@ -245,8 +335,21 @@ p { margin-bottom: 15px; text-align: justify; }
         box-shadow: none;
         margin: 0;
         padding: 8mm 12mm;
-        width: 100%;
-        height: 100%;
-        page-break-after: avoid; /* Handled by wrapper now */
+        width: 210mm;
+        height: 297mm;
+        border: none;
+        page-break-after: avoid; 
+    }
+    
+    .placeholder {
+        background: none;
+        color: #ccc;
+        -webkit-text-fill-color: initial;
+        animation: none;
+    }
+    
+    @page {
+        size: A4;
+        margin: 0; 
     }
 }

@@ -1,7 +1,8 @@
-// Initialize Flatpickr for flight-style calendar
+// Initialize Flatpickr for flight-style calendar (responsive)
+const isMobile = window.innerWidth <= 768;
 flatpickr("#inpDateRange", {
     mode: "range",
-    showMonths: 2,
+    showMonths: isMobile ? 1 : 2, // 1 month on phone, 2 on desktop
     altInput: true,
     altFormat: "d M Y",
     dateFormat: "Y-m-d",
