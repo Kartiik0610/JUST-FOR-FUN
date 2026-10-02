@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJSCE NOC Letter Generator</title>
+    <!-- Flatpickr for flight-style date selection -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+    <!-- Separated CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Left Controls Panel -->
+    <div class="controls">
+        <h2>Enter Letter Details</h2>
+        
+        <div id="students-container">
+            <!-- Initial Student Entry -->
+            <div class="student-entry">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" class="inpName" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label>Roll No.</label>
+                    <input type="text" class="inpRoll" placeholder="Eg:. M194">
+                    <div class="error rollError">Must be 1 letter + 3 numbers (e.g., A123).</div>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>SAP ID</label>
+                    <input type="text" class="inpSap" placeholder="Eg:. 60005240027">
+                    <div class="error sapError">Must be exactly 11 digits.</div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn-secondary" onclick="addStudent()">+ Add Another Student</button>
+        <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 20px 0;">
+
+        <div class="form-group">
+            <label>Department (DJSCE)</label>
+            <select id="inpDept">
+                <option value="" disabled selected>Select Department...</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Telecommunication Engineering">Electronics & Telecommunication Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
+                <option value="Computer Science and Engineering">Computer Science and Engineering (IoT/Cyber/Block Chain)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" id="inpCompany" placeholder="e.g. Echaar Equipments PVT. LTD.">
+        </div>
+
+        <!-- Flight booking style Date Range -->
+        <div class="form-group">
+            <label>Internship Duration (Start & End Date)</label>
+            <input type="text" id="inpDateRange" placeholder="Select dates...">
+        </div>
+
+        <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <!-- Right A4 Preview Panel -->
+    <div class="preview-container" id="preview-container">
+        <!-- Generated Sheets go here -->
+    </div>
+
+    <!-- Template for A4 Sheet -->
+    <template id="sheet-template">
+        <div class="sheet-wrapper">
+            <div class="a4-sheet">
+                <div class="annexure-label">ANNEXURE 1</div>
+                
+                <!-- Replace 'LOGO.png' and 'Watermark.png' with your actual file names -->
+                <img src="LOGO.png" alt="" class="top-logo">
+                <img src="Watermark.png" alt="" class="watermark">
+                
+                <div class="content">
+                    <div class="center bold title-1">NO OBJECTION CERTIFICATE</div>
+                    <div class="center bold underline title-2">TO WHOMSOEVER IT MAY CONCERN</div>
+                    
+                    <p>
+                        This is to certify that <span class="outName bold placeholder">[Name of the student]</span> bearing Roll No.: <span class="outRoll bold placeholder">[Roll No.]</span> and SAP ID: <span class="outSap bold placeholder">[SAP ID]</span>, a student of the <span class="outDept bold placeholder">[Department]</span> DJSCE is permitted to undergo Internship (OJT) Cum Project at <span class="outCompany bold placeholder">[Company Name]</span> from <span class="outStart bold placeholder">[Starting Date]</span> to <span class="outEnd bold placeholder">[Ending Date]</span>.
+                    </p>
+
+                    <p>The department has no objection to the above student undergoing training at your esteemed organization. This training is a part of the academic curriculum and is expected to help the student gain practical exposure and enhance technical knowledge. They are expected to add value to your organisation with their contribution.</p>
+
+                    <p>We request you to kindly provide the necessary facility at your end and also the required guidance and support to the student during the training period.</p>
+
+                    <p>We wish him/her all the best for the successful completion of the training.</p>
+
+                    <div class="signature-block">
+                        <table style="width: 100%; border: none; border-collapse: collapse; text-align: center; margin-top: 50px;">
+                          <tr>
+                            <td style="border-top: 1px solid black; width: 40%; padding-top: 10px; font-weight: bold;">
+                              Internship (OJT) Cum Project Coordinator
+                            </td>
+                            <td style="border: none; width: 20%;"></td>
+                            <td style="border-top: 1px solid black; width: 40%; padding-top: 10px; font-weight: bold;">
+                              Head of Department
+                            </td>
+                          </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <!-- Separated JS -->
+    <script src="script.js"></script>
+</body>
+</html>

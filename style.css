@@ -1,0 +1,252 @@
+/* Base Styles & Layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    height: 100vh;
+}
+
+/* Left Side Form Panel */
+.controls {
+    width: 400px;
+    background: #ffffff;
+    padding: 30px 40px;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.06);
+    overflow-y: auto;
+    z-index: 10;
+    border-right: 1px solid #e5e7eb;
+}
+
+.controls h2 {
+    margin-top: 0;
+    color: #111827;
+    font-size: 22px;
+    font-weight: 700;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Updated UI/UX based on request */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #2b6cb0;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #334155;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    background-color: #ffffff;
+}
+
+/* Student Entry Box for Multiple Students */
+.student-entry {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.student-entry .remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    width: auto;
+    margin: 0;
+}
+.student-entry .remove-btn:hover { background: #dc2626; }
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+.btn-secondary:hover { background-color: #cbd5e1; }
+
+.btn-generate {
+    background-color: #2563eb;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+.btn-generate:hover { 
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.3);
+}
+
+.btn-print {
+    background-color: #10b981;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+}
+.btn-print:hover { 
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.3);
+}
+
+.error {
+    color: #ef4444;
+    font-size: 12px;
+    display: none;
+    margin-top: 6px;
+}
+
+/* Right Side A4 Preview Panel */
+.preview-container {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- A4 Sheet Styling --- */
+.a4-sheet {
+    width: 210mm;
+    height: 297mm;
+    background: white;
+    padding: 8mm 12mm;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    color: #000;
+    flex-shrink: 0;
+}
+
+.annexure-label {
+    position: absolute;
+    top: 8mm;
+    right: 12mm;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.top-logo {
+    width: 100%;
+    display: block;
+    margin: 0 auto 15px auto;
+    margin-top: 30px;
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    opacity: 0.19;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.content { position: relative; z-index: 2; }
+.center { text-align: center; }
+.bold { font-weight: bold; }
+.underline { text-decoration: underline; }
+
+.title-1 { font-size: 18pt; margin-bottom: 5px; }
+.title-2 { font-size: 16pt; margin-bottom: 30px; }
+p { margin-bottom: 15px; text-align: justify; }
+
+.signature-block { margin-top: 150px; text-align: left; }
+
+.placeholder { color: #ccc; font-style: italic; }
+.filled { color: #000; font-style: normal; }
+
+/* Sheet Wrapper (Used for foolproof centering and scaling) */
+.sheet-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+    body { flex-direction: column; height: auto; }
+    .controls { width: 100%; padding: 20px 15px; border-right: none; border-bottom: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .preview-container { 
+        width: 100%; 
+        padding: 20px 0; 
+        overflow-x: hidden; 
+    }
+    .sheet-wrapper {
+        height: 143mm; /* 297mm * 0.48 = 142.56mm. Reserves exact scaled space. */
+        overflow: hidden; /* Prevent original 210mm box from forcing flex container width */
+    }
+    .a4-sheet { 
+        transform: scale(0.48); 
+        transform-origin: top center;
+        margin: 0;
+    }
+}
+
+/* Print Media Query: Multiple pages support */
+@media print {
+    body { background: white; display: block; height: auto; }
+    .controls { display: none; }
+    .preview-container { padding: 0; display: block; gap: 0; }
+    .sheet-wrapper {
+        display: block;
+        width: 100%;
+        page-break-after: always;
+    }
+    .sheet-wrapper:last-child {
+        page-break-after: auto;
+    }
+    .a4-sheet {
+        box-shadow: none;
+        margin: 0;
+        padding: 8mm 12mm;
+        width: 100%;
+        height: 100%;
+        page-break-after: avoid; /* Handled by wrapper now */
+    }
+}
